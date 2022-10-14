@@ -32,6 +32,18 @@ function Nav() {
               Info Page
             </Link>
 
+            <Link className="navLink" to="/medication">
+              Medications
+            </Link>
+
+            <Link className="navLink" to="/procedure">
+              Procedures
+            </Link>
+
+            <Link className="navLink" to="/exam">
+              Exams
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
