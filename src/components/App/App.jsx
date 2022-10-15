@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Medication from '../Medication/Medication';
 import Procedure from '../Procedure/Procedure';
 import Exam from '../Exam/Exam';
+import NewVisit from '../NewVisit/NewVisit';
 
 import './App.css';
 
@@ -35,6 +36,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <div>
     <Router>
       <div>
         <Nav />
@@ -83,6 +85,10 @@ function App() {
               <Exam />
             </ProtectedRoute>
 
+            <ProtectedRoute exact path="/newVisit">
+              <NewVisit />
+            </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -110,7 +116,7 @@ function App() {
               <RegisterPage />
             }
           </Route>
-
+         
           <Route
             exact
             path="/home"
@@ -133,6 +139,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </div>
   );
 }
 
