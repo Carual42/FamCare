@@ -23,13 +23,13 @@ function createData(name, calories, fat, carbs, protein) {
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function Procedure() {
+function Scan() {
   return (
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>Procedure</TableCell>
+          <TableCell>Scans</TableCell>
           <TableCell align="right">Notes</TableCell>
           <TableCell align="right">Phone</TableCell>
           <TableCell align="right">Date</TableCell>
@@ -55,4 +55,4 @@ function Procedure() {
 );
 }
 
-export default Procedure;
+export default Scan;

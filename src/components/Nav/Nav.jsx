@@ -40,8 +40,8 @@ function Nav() {
               Procedures
             </Link>
 
-            <Link className="navLink" to="/exam">
-              Exams
+            <Link className="navLink" to="/scan">
+              Scans
             </Link>
 
             <LogOutButton className="navLink" />
