@@ -21,7 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Medication from '../Medication/Medication';
 import Procedure from '../Procedure/Procedure';
-import Exam from '../Exam/Exam';
+import Scan from '../Scan/Scan';
 import NewVisit from '../NewVisit/NewVisit';
 
 import './App.css';
@@ -81,8 +81,8 @@ function App() {
               <Procedure />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/exam">
-              <Exam />
+            <ProtectedRoute exact path="/scan">
+              <Scan />
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/newVisit">
