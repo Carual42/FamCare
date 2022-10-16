@@ -7,8 +7,19 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
+  if (req.isAuthenticated()) {
+    let queryText = `SELECT * FROM "procedure" WHERE "user_id" = $1 ORDER BY "date" DESC`;
+    pool.query(queryText, [req.user.id]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+} else {
+    res.sendStatus(403); // 403 Forbidden (must log in)
+    // 401 Unauthorized (e.g. requires Admin but logged in as User)
+}
 });
-
 /**
  * POST route template
  */
