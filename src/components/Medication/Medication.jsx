@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,6 +27,23 @@ function createData(name, calories, fat, carbs, protein) {
 // or even care what the redux state is'
 
 function Medication() {
+
+const [medlist, setMedList] = useState([]);
+
+useEffect(() => {
+    fetchMeds();
+}, []);
+
+const fetchMeds = () =>{
+    axios.get('/api/medication')
+    .then((response) => {
+        setMedList(response.data);
+        console.log(response.data);
+    }).catch((error) => {
+        console.log('error in fetchMeds', error);
+    });
+}
+
   return (
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
