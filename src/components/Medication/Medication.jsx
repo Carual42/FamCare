@@ -39,7 +39,7 @@ const fetchMeds = () =>{
       <TableHead>
         <TableRow>
           <TableCell>Medication (Dose)</TableCell>
-          <TableCell align="right">Notes</TableCell>
+          <TableCell align="center">Notes</TableCell>
           <TableCell align="right">Phone</TableCell>
           <TableCell align="right">Date</TableCell>
           <TableCell></TableCell>
@@ -55,7 +55,7 @@ const fetchMeds = () =>{
             <TableCell component="th" scope="row">
               {med.name}
             </TableCell>
-            <TableCell align="right">{med.notes}</TableCell>
+            <TableCell align="center">{med.notes}</TableCell>
             <TableCell align="right">{med.phone}</TableCell>
             <TableCell align="right">{med.date}</TableCell>
             <TableCell>
