@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button'
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 // This is one of our simplest components
@@ -39,6 +40,8 @@ function Scan() {
             <TableCell align="right">Notes</TableCell>
             <TableCell align="right">Phone</TableCell>
             <TableCell align="right">Date</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,6 +56,12 @@ function Scan() {
               <TableCell align="right">{med.notes}</TableCell>
               <TableCell align="right">{med.phone}</TableCell>
               <TableCell align="right">{med.date}</TableCell>
+              <TableCell>
+            <Button>update</Button>
+            </TableCell>
+            <TableCell>
+            <Button>delete</Button>
+            </TableCell> 
             </TableRow>
           ))}
         </TableBody>
