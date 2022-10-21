@@ -31,6 +31,19 @@ function Procedure() {
       });
   }
   
+  const deleteData = (dataID) => {
+
+    console.log(dataID)
+    axios({
+        method: 'DELETE',
+        url: `/api/procedure/${dataID}`
+    }).then(response => {
+        fetchProcedure();
+    }).catch(error => {
+        console.log('error in DELETE in med.jsx', error);
+    })
+}
+
     return (
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -60,7 +73,7 @@ function Procedure() {
             <Button>update</Button>
             </TableCell>
             <TableCell>
-            <Button>delete</Button>
+            <Button onClick={() => deleteData(med.id)} >delete</Button>
             </TableCell> 
             </TableRow>
           ))}

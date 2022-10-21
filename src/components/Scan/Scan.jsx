@@ -30,6 +30,19 @@ function Scan() {
           console.log('error in fetchMeds', error);
       });
   }
+
+  const deleteData = (dataID) => {
+
+    console.log(dataID)
+    axios({
+        method: 'DELETE',
+        url: `/api/scan/${dataID}`
+    }).then(response => {
+        fetchScan();
+    }).catch(error => {
+        console.log('error in DELETE in med.jsx', error);
+    })
+}
   
     return (
       <TableContainer component={Paper}>
@@ -60,7 +73,7 @@ function Scan() {
             <Button>update</Button>
             </TableCell>
             <TableCell>
-            <Button>delete</Button>
+            <Button onClick={() => deleteData(med.id)} >delete</Button>
             </TableCell> 
             </TableRow>
           ))}
