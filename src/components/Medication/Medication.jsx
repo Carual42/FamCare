@@ -33,6 +33,19 @@ const fetchMeds = () =>{
     });
 }
 
+const deleteData = (dataID) => {
+
+    console.log(dataID)
+    axios({
+        method: 'DELETE',
+        url: `/api/medication/${dataID}`
+    }).then(response => {
+        fetchMeds();
+    }).catch(error => {
+        console.log('error in DELETE in med.jsx', error);
+    })
+}
+
   return (
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -62,7 +75,7 @@ const fetchMeds = () =>{
             <Button>update</Button>
             </TableCell>
             <TableCell>
-            <Button>delete</Button>
+            <Button onClick={() => deleteData(med.id)} >delete</Button>
             </TableCell> 
           </TableRow>
         ))}
