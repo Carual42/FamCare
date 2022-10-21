@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -38,9 +39,11 @@ const fetchMeds = () =>{
       <TableHead>
         <TableRow>
           <TableCell>Medication (Dose)</TableCell>
-          <TableCell align="right">Notes</TableCell>
+          <TableCell align="center">Notes</TableCell>
           <TableCell align="right">Phone</TableCell>
           <TableCell align="right">Date</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -52,9 +55,15 @@ const fetchMeds = () =>{
             <TableCell component="th" scope="row">
               {med.name}
             </TableCell>
-            <TableCell align="right">{med.notes}</TableCell>
+            <TableCell align="center">{med.notes}</TableCell>
             <TableCell align="right">{med.phone}</TableCell>
             <TableCell align="right">{med.date}</TableCell>
+            <TableCell>
+            <Button>update</Button>
+            </TableCell>
+            <TableCell>
+            <Button>delete</Button>
+            </TableCell> 
           </TableRow>
         ))}
       </TableBody>
