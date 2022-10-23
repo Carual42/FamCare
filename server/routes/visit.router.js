@@ -29,8 +29,18 @@ const router = express.Router();
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
-});
+ router.post('/', (req, res) => {
+   if (req.isAuthenticated()){
+    const queryText = `INSERT INTO "medication" (name, notes, user_id, phone)
+      VALUES ($1, $2, $3, $4);`;
+    pool
+      .query(queryText, [ req.body.med[0].name, req.body.med[0].note, req.user.id, req.body.med[0].phone])
+      .then(() => res.sendStatus(201))
+      .catch((err) => {
+        console.log('err in visit POST', err);
+        res.sendStatus(500);
+      });
+   }
+  });
 
 module.exports = router;

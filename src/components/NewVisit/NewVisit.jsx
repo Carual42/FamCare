@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 // This is one of our simplest components
@@ -7,6 +8,21 @@ import {useEffect, useState} from 'react'
 // or even care what the redux state is'
 
 function NewVisit() {
+// get request to get most recent visit number then +1 it?
+
+// POST to database
+const sendVisit = () => {
+  
+  console.log('in POST sendVisit');
+  axios.post('/api/visit', {med: newMedVisit})
+  .then(() => {
+    alert('visit done');
+  }).catch((err) => {
+    console.log('err in POST sendVist', err);
+  })
+
+}
+
   const [newMedVisit, setNewMedVisit] = useState([]);
   const [medPhone, setMedPhone] = useState('');
   const [med, setMed] = useState('');
@@ -14,7 +30,7 @@ function NewVisit() {
   const createMedVisit = () => {
     let medVisit = {
       phone: medPhone,
-      med: med,
+      name: med,
       note: medNote,
     };
     console.log('this is the object', medVisit);
@@ -97,6 +113,7 @@ function NewVisit() {
         <br />
         <Button>Submit</Button>
         </form>
+        <Button onClick={() => sendVisit()}>End Visit</Button>
       </div>
     </div>
   );
