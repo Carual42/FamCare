@@ -13,6 +13,7 @@ const medicationRouter = require('./routes/medication.router');
 const procedureRouter = require('./routes/procedure.router');
 const scanRouter = require('./routes/scan.router');
 const visitRouter = require('./routes/visit.router');
+const newVisitRouter = require('./routes/newvisit.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/api/medication', medicationRouter);
 app.use('/api/procedure', procedureRouter);
 app.use('/api/scan', scanRouter);
 app.use('/api/visit', visitRouter);
+app.use('/api/newVisit', newVisitRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -14,7 +14,7 @@ function NewVisit() {
 const sendVisit = () => {
   
   console.log('in POST sendVisit');
-  axios.post('/api/visit', {med: newMedVisit})
+  axios.post('/api/newvisit', {med: newMedVisit})
   .then(() => {
     alert('visit done');
   }).catch((err) => {
