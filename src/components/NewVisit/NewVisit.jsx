@@ -2,12 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
+import { useHistory } from 'react-router-dom';
+
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
 function NewVisit() {
+const history = useHistory();
+
 // get request to get most recent visit number then +1 it?
 
 // POST to database
@@ -17,6 +21,7 @@ const sendVisit = () => {
   axios.post('/api/newvisit', {med: newMedVisit})
   .then(() => {
     alert('visit done');
+    history.push(`/`)
   }).catch((err) => {
     console.log('err in POST sendVist', err);
   })
