@@ -29,6 +29,7 @@ const newID = (id) => {
 const fetchVisitID = () => {
     axios.get('/api/newVisit')
     .then((response) => {
+      console.log(response.data)
         newID(response.data[0].id)
     }).catch((error) => {
         console.log('error in fetchMeds', error);
@@ -45,6 +46,7 @@ const sendVisit = () => {
    visit: newVisitID})
   .then(() => {
     alert('visit done');
+
     history.push(`/`)
   }).catch((err) => {
     console.log('err in POST sendVist', err);
