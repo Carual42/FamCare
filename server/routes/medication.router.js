@@ -27,9 +27,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
-});
+
 
 // DELETE route
 router.delete('/:id', (req, res) => {
