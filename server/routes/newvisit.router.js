@@ -29,13 +29,14 @@ const router = express.Router();
  */
  router.post('/', (req, res) => {
   if (req.isAuthenticated()){
-   const queryText = `INSERT INTO "medication" (name, notes, user_id, phone, date)
+    const queryText = `INSERT INTO "visit" (date, user_visit_id)
+    VALUES ($1, $2);`;
+  pool.query(queryText, [req.body.date, req.user.id])
+     .then(() => {
+      const queryText2 = `INSERT INTO "medication" (name, notes, user_id, phone, date)
      VALUES ($1, $2, $3, $4, $5);`;
-   pool.query(queryText, [ req.body.med[0].name, req.body.med[0].note, req.user.id, req.body.med[0].phone, req.body.med[0].date])
-     .then(() => 
-     
-     res.sendStatus(201))
-     .catch((err) => {
+   pool.query(queryText2, [ req.body.med[0].name, req.body.med[0].note, req.user.id, req.body.med[0].phone, req.body.date])
+    }).catch((err) => {
        console.log('err in visit POST', err);
        res.sendStatus(500);
      });
