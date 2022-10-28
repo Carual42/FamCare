@@ -46,8 +46,7 @@ const sendVisit = () => {
    visit: newVisitID})
   .then(() => {
     alert('visit done');
-
-    history.push(`/`)
+    history.push(`/`);
   }).catch((err) => {
     console.log('err in POST sendVist', err);
   })
