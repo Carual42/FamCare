@@ -27,22 +27,32 @@ const router = express.Router();
 /**
  * POST route template
  */
- router.post('/', (req, res) => {
+ router.post('/', async (req, res) => {
+  try {
   if (req.isAuthenticated()){
+    console.log('this is req.body', req.body)
     const queryText = `INSERT INTO "visit" (date, user_visit_id)
-    VALUES ($1, $2);`;
-  pool.query(queryText, [req.body.date, req.user.id])
-     .then(() => {
-      const queryText2 = `INSERT INTO "medication" (name, notes, user_id, visit_id, phone, date)
-     VALUES ($1, $2, $3, $4, $5, $6);`;
-   pool.query(queryText2, [ req.body.med[0].name, req.body.med[0].note, req.user.id, req.body.visit, req.body.med[0].phone, req.body.date])
-   .then(() => {
-    res.sendStatus(201);
-    })
-    }).catch((err) => {
-       console.log('err in visit POST', err);
-       res.sendStatus(500);
-     });
+                       VALUES ($1, $2);`;
+    await pool.query(queryText, [req.body.date, req.user.id]);
+    const queryText2 = `INSERT INTO "medication" (name, notes, user_id, visit_id, phone, date)
+                        VALUES ($1, $2, $3, $4, $5, $6);`;
+    for (let i = 0; i < req.body.med.length; i++ ) {
+    await pool.query(queryText2, [ req.body.med[i].name, req.body.med[i].note, req.user.id, req.body.visit, req.body.med[i].phone, req.body.date])
+    };
+    const queryText3 = `INSERT INTO "procedure" (name, notes, user_id, visit_id, phone, date)
+                        VALUES ($1, $2, $3, $4, $5, $6);`;
+    for (let i = 0; i < req.body.procedure.length; i++ ) {
+    await pool.query(queryText3, [ req.body.procedure[i].name, req.body.procedure[i].note, req.user.id, req.body.visit, req.body.procedure[i].phone, req.body.date])
+    };
+    const queryText4 = `INSERT INTO "scan" (name, notes, user_id, visit_id, phone, date)
+                        VALUES ($1, $2, $3, $4, $5, $6);`;
+    for (let i = 0; i < req.body.exam.length; i++ ) {
+    await pool.query(queryText4, [ req.body.exam[i].name, req.body.exam[i].note, req.user.id, req.body.visit, req.body.exam[i].phone, req.body.date])
+    };
+    res.sendStatus(201);}
+  } catch (err) {
+    console.log('error in POST newVisit', err);
+    res.sendStatus(500);
   }
  });
 
