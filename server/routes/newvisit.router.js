@@ -44,14 +44,14 @@ const router = express.Router();
     for (let i = 0; i < req.body.procedure.length; i++ ) {
     await pool.query(queryText3, [ req.body.procedure[i].name, req.body.procedure[i].note, req.user.id, req.body.visit, req.body.procedure[i].phone, req.body.date])
     };
-    const queryText4 = `INSERT INTO "exam" (name, notes, user_id, visit_id, phone, date)
+    const queryText4 = `INSERT INTO "scan" (name, notes, user_id, visit_id, phone, date)
                         VALUES ($1, $2, $3, $4, $5, $6);`;
     for (let i = 0; i < req.body.exam.length; i++ ) {
     await pool.query(queryText4, [ req.body.exam[i].name, req.body.exam[i].note, req.user.id, req.body.visit, req.body.exam[i].phone, req.body.date])
     };
     res.sendStatus(201);}
   } catch (err) {
-    console.log('error in POST newVisit');
+    console.log('error in POST newVisit', err);
     res.sendStatus(500);
   }
  });
