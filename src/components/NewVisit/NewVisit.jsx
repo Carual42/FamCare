@@ -11,17 +11,42 @@ import { useHistory } from 'react-router-dom';
 
 function NewVisit() {
 const history = useHistory();
+const [date, setDate] = useState('');
 
 // get request to get most recent visit number then +1 it?
+const [newVisitID, setNewVisitID] = useState('');
 
+useEffect(() => {
+    fetchVisitID();
+}, []);
+
+const newID = (id) => {
+  let plusOne = parseInt(id) + 1;
+  console.log(plusOne);
+  setNewVisitID(plusOne)
+}
+
+const fetchVisitID = () => {
+    axios.get('/api/newVisit')
+    .then((response) => {
+      console.log(response.data)
+        newID(response.data[0].id)
+    }).catch((error) => {
+        console.log('error in fetchMeds', error);
+    });
+}
 // POST to database
 const sendVisit = () => {
-  
   console.log('in POST sendVisit');
-  axios.post('/api/newvisit', {med: newMedVisit})
+  axios.post('/api/newVisit', 
+  {med: newMedVisit,
+   procedure: newProcedureVisit,
+   exam: newExamVisit,
+   date: date,
+   visit: newVisitID})
   .then(() => {
     alert('visit done');
-    history.push(`/`)
+    history.push(`/`);
   }).catch((err) => {
     console.log('err in POST sendVist', err);
   })
@@ -36,7 +61,7 @@ const sendVisit = () => {
     let medVisit = {
       phone: medPhone,
       name: med,
-      note: medNote,
+      note: medNote
     };
     console.log('this is the object', medVisit);
     newMedVisit.push(medVisit);
@@ -46,21 +71,51 @@ const sendVisit = () => {
     setMedNote('');
   }
 
-  let newProcedureVisit = [];
+  const [newProcedureVisit, setNewProcedureVisit] = useState([]);
   const [procedurePhone, setProcedurePhone] = useState('');
   const [procedure, setProcedure] = useState('');
   const [procedureNote, setProcedureNote] = useState('');
+  const createProcedureVisit = () => {
+    let medVisit = {
+      phone: procedurePhone,
+      name: procedure,
+      note: procedureNote,
+    };
+    console.log('this is the object', medVisit);
+    newProcedureVisit.push(medVisit);
+    console.log('this is the array', newMedVisit);
+    setProcedurePhone('');
+    setProcedure('');
+    setProcedureNote('');
+  }
 
-  let newExamVisit = [];
+  const [newExamVisit, setNewExamVisit] = useState([]);
   const [examPhone, setExamPhone] = useState('');
   const [exam, setExam] = useState('');
   const [examNote, setExamNote] = useState('');
+  const createExamVisit = () => {
+    let medVisit = {
+      phone: examPhone,
+      name: exam,
+      note: examNote,
+    };
+    console.log('this is the object', medVisit);
+    newExamVisit.push(medVisit);
+    console.log('this is the array', newMedVisit);
+    setExamPhone('');
+    setExam('');
+    setExamNote('');
+  }
  
 
   return (
     <div className="container">
       <div>
         <p>This page will have input fields for the user to enter new information</p>
+        <TextField  value={date} 
+                    onChange={(event) => setDate(event.target.value)}
+                    className="filled-basic" multiline 
+                    label="date" variant="filled" /> 
         <br />
         <h2>Medications</h2>
         <form>
@@ -96,7 +151,7 @@ const sendVisit = () => {
                     className="filled-basic" multiline
                     label="Notes" variant="filled" />
         <br />
-        <Button>Submit</Button>
+        <Button onClick={() => createProcedureVisit()} >Submit</Button>
         </form>
         <br />
         <br />
@@ -116,7 +171,7 @@ const sendVisit = () => {
                     className="filled-basic" multiline 
                     label="Notes" variant="filled" />
         <br />
-        <Button>Submit</Button>
+        <Button onClick={() => createExamVisit()}>Submit</Button>
         </form>
         <Button onClick={() => sendVisit()}>End Visit</Button>
       </div>
