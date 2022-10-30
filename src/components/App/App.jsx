@@ -89,6 +89,10 @@ function App() {
               <NewVisit />
             </ProtectedRoute>
 
+            <ProtectedRoute path="/edit/:id" exact>
+          <NewVisit />
+        </ProtectedRoute>
+
           <Route
             exact
             path="/login"

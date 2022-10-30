@@ -3,6 +3,7 @@ import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
+const {id} = useParams();
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -111,7 +112,8 @@ const sendVisit = () => {
   return (
     <div className="container">
       <div>
-        <p>This page will have input fields for the user to enter new information</p>
+        {id ? <p>blahhh</p> : <p>This page will have input fields for the user to enter new information</p> }
+        <h3>{id}</h3>
         <TextField  value={date} 
                     onChange={(event) => setDate(event.target.value)}
                     className="filled-basic" multiline 
