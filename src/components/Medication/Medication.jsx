@@ -9,14 +9,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
 
 function Medication() {
-
+  const history = useHistory();
+  
 const [medList, setMedList] = useState([]);
 
 useEffect(() => {
@@ -34,7 +32,6 @@ const fetchMeds = () =>{
 }
 
 const deleteData = (dataID) => {
-
     console.log(dataID)
     axios({
         method: 'DELETE',
@@ -44,6 +41,11 @@ const deleteData = (dataID) => {
     }).catch(error => {
         console.log('error in DELETE in med.jsx', error);
     })
+}
+
+const editData = (dataID) => {
+  console.log(dataID)
+  history.push(`/edit/${dataID}`);
 }
 
   return (
@@ -72,7 +74,7 @@ const deleteData = (dataID) => {
             <TableCell align="right">{med.phone}</TableCell>
             <TableCell align="right">{med.date}</TableCell>
             <TableCell>
-            <Button>update</Button>
+            <Button onClick={() => editData(med.id)} >update</Button>
             </TableCell>
             <TableCell>
             <Button onClick={() => deleteData(med.id)} >delete</Button>

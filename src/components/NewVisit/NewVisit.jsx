@@ -4,6 +4,7 @@ import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
 
+
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -35,6 +36,7 @@ const fetchVisitID = () => {
         console.log('error in fetchMeds', error);
     });
 }
+
 // POST to database
 const sendVisit = () => {
   console.log('in POST sendVisit');
@@ -50,7 +52,6 @@ const sendVisit = () => {
   }).catch((err) => {
     console.log('err in POST sendVist', err);
   })
-
 }
 
   const [newMedVisit, setNewMedVisit] = useState([]);

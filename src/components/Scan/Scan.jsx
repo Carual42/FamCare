@@ -9,12 +9,12 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button'
 import axios from 'axios';
 import {useState, useEffect} from 'react';
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import { useHistory } from 'react-router-dom';
+
 
 function Scan() {
+  const history = useHistory();
+
   const [medList, setMedList] = useState([]);
 
   useEffect(() => {

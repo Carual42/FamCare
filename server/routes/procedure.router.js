@@ -37,6 +37,18 @@ router.get('/', (req, res) => {
   }
  });
 
+ //PUT route
+ router.put('/:id', (req, res) => {
+  const queryText = `UPDATE "procedure" SET "name" = $1, "phone" = $2, "date" = $3, "notes" = 4$
+                     WHERE "id" = $4;`; // AND "user_id" = $5; // For solo projects
+  pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.note, req.params.id])
+      .then(results => {
+        res.sendStatus(200);
+      }).catch(error => {
+        console.log(error);
+        res.sendStatus(500);
+      })
+})
 
 // DELETE route
 router.delete('/:id', (req, res) => {
