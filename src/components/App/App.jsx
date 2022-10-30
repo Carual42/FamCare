@@ -24,6 +24,8 @@ import Procedure from '../Procedure/Procedure';
 import Scan from '../Scan/Scan';
 import NewVisit from '../NewVisit/NewVisit';
 import EditVisit from '../EditVisit/EditVisit';
+import EditExamVisit from '../EditVisit/EditExamVisit';
+import EditProcedureVisit from '../EditVisit/EditProcedureVisit copy';
 import './App.css';
 
 function App() {
@@ -91,6 +93,14 @@ function App() {
 
             <ProtectedRoute path="/edit/:id" exact>
           <EditVisit />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/editP/:id" exact>
+          <EditProcedureVisit />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/editE/:id" exact>
+          <EditExamVisit />
         </ProtectedRoute>
 
           <Route
