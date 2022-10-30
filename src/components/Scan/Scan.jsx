@@ -44,6 +44,11 @@ function Scan() {
     })
 }
   
+const editData = (dataID) => {
+  console.log(dataID)
+  history.push(`/editE/${dataID}`);
+}
+
     return (
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -70,7 +75,7 @@ function Scan() {
               <TableCell align="right">{med.phone}</TableCell>
               <TableCell align="right">{med.date}</TableCell>
               <TableCell>
-            <Button>update</Button>
+            <Button onClick={() => editData(med.id)} >update</Button>
             </TableCell>
             <TableCell>
             <Button onClick={() => deleteData(med.id)} >delete</Button>

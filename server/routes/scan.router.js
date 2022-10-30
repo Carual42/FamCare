@@ -20,6 +20,21 @@ router.get('/', (req, res) => {
     // 401 Unauthorized (e.g. requires Admin but logged in as User)
 }
 });
+
+router.get('/:id', (req, res) => {
+
+  const query = `SELECT * FROM "scan" WHERE "id"=$1`;
+  pool.query(query, [req.params.id])
+    .then(result => {
+      // Return the first item in the array (which is an Object)
+      res.send(result.rows[0]);
+    })
+    .catch(err => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
+
+});
 /**
  * POST route template
  */
@@ -39,9 +54,14 @@ router.get('/', (req, res) => {
 
 //PUT
 router.put('/:id', (req, res) => {
-  const queryText = `UPDATE "exam" SET "name" = $1, "phone" = $2, "date" = $3, "notes" = 4$
-                     WHERE "id" = $4;`; // AND "user_id" = $5; // For solo projects
-  pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.note, req.params.id])
+  console.log(req.body, req.params);
+  const queryText = `UPDATE "scan" 
+                    SET "name" = $1, 
+                    "phone" = $2, 
+                    "date" = $3, 
+                    "notes" = $4
+                     WHERE "id" = $5;`;
+  pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.notes, req.params.id])
       .then(results => {
         res.sendStatus(200);
       }).catch(error => {
