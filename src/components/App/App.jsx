@@ -23,7 +23,7 @@ import Medication from '../Medication/Medication';
 import Procedure from '../Procedure/Procedure';
 import Scan from '../Scan/Scan';
 import NewVisit from '../NewVisit/NewVisit';
-
+import EditVisit from '../EditVisit/EditVisit';
 import './App.css';
 
 function App() {
@@ -90,7 +90,7 @@ function App() {
             </ProtectedRoute>
 
             <ProtectedRoute path="/edit/:id" exact>
-          <NewVisit />
+          <EditVisit />
         </ProtectedRoute>
 
           <Route

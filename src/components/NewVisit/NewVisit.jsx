@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
-const {id} = useParams();
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -36,6 +36,7 @@ const fetchVisitID = () => {
         console.log('error in fetchMeds', error);
     });
 }
+
 // POST to database
 const sendVisit = () => {
   console.log('in POST sendVisit');
@@ -51,7 +52,6 @@ const sendVisit = () => {
   }).catch((err) => {
     console.log('err in POST sendVist', err);
   })
-
 }
 
   const [newMedVisit, setNewMedVisit] = useState([]);
@@ -112,8 +112,7 @@ const sendVisit = () => {
   return (
     <div className="container">
       <div>
-        {id ? <p>blahhh</p> : <p>This page will have input fields for the user to enter new information</p> }
-        <h3>{id}</h3>
+        <p>This page will have input fields for the user to enter new information</p>
         <TextField  value={date} 
                     onChange={(event) => setDate(event.target.value)}
                     className="filled-basic" multiline 

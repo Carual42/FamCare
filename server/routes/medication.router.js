@@ -24,13 +24,33 @@ router.get('/', (req, res) => {
     }
 });
 
+router.get('/:id', (req, res) => {
+
+  const query = `SELECT * FROM "medication" WHERE "id"=$1`;
+  pool.query(query, [req.params.id])
+    .then(result => {
+      // Return the first item in the array (which is an Object)
+      res.send(result.rows[0]);
+    })
+    .catch(err => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
+
+});
+
 /**
- * POST route template
+ * PUT route template
  */
  router.put('/:id', (req, res) => {
-  const queryText = `UPDATE "medication" SET "name" = $1, "phone" = $2, "date" = $3, "notes" = 4$
-                     WHERE "id" = $4;`; // AND "user_id" = $5; // For solo projects
-  pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.note, req.params.id])
+  console.log(req.body, req.params);
+  const queryText = `UPDATE "medication" 
+                    SET "name" = $1, 
+                    "phone" = $2, 
+                    "date" = $3, 
+                    "notes" = $4
+                     WHERE "id" = $5;`;
+  pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.notes, req.params.id])
       .then(results => {
         res.sendStatus(200);
       }).catch(error => {
