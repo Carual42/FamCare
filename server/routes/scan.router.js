@@ -38,28 +38,15 @@ router.get('/:id', (req, res) => {
 /**
  * POST route template
  */
- router.post('/', (req, res) => {
-  if (req.isAuthenticated()){
-   const queryText = `INSERT INTO "medication" (name, notes, user_id, phone)
-     VALUES ($1, $2, $3, $4);`;
-   pool
-     .query(queryText, [ req.body.med[0].name, req.body.med[0].note, req.user.id, req.body.med[0].phone])
-     .then(() => res.sendStatus(201))
-     .catch((err) => {
-       console.log('err in visit POST', err);
-       res.sendStatus(500);
-     });
-  }
- });
 
 //PUT
 router.put('/:id', (req, res) => {
   console.log(req.body, req.params);
   const queryText = `UPDATE "scan" 
-                    SET "name" = $1, 
-                    "phone" = $2, 
+                    SET "scan_name" = $1, 
+                    "scan_phone" = $2, 
                     "date" = $3, 
-                    "notes" = $4
+                    "scan_notes" = $4
                      WHERE "id" = $5;`;
   pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.notes, req.params.id])
       .then(results => {

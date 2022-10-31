@@ -2,7 +2,7 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom'
-import VisitCard from '../VisitCard/VisitCard';
+import VisitCardGrid from '../VisitCard/VisitCard';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -18,7 +18,7 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <div>
-        <VisitCard />
+        <VisitCardGrid />
       </div>
       <button onClick={() => handleClick()} placeholder='New Visit'>New Visit</button>
       <br />

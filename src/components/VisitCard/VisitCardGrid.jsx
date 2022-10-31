@@ -33,9 +33,9 @@ function VisitCard() {
     axios.get('/api/newVisit')
     .then((response) => {
       setVisitList(response.data);
-      
       console.log('response data', visitList[0].id);
       fetchVisit(visitList[0].id);
+      
     }).catch((error) => {
         console.log('error in fetchMeds', error);
     });

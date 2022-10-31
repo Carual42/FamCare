@@ -68,10 +68,10 @@ const editData = (dataID) => {
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
             <TableCell component="th" scope="row">
-              {med.name}
+              {med.med_name}
             </TableCell>
-            <TableCell align="center">{med.notes}</TableCell>
-            <TableCell align="right">{med.phone}</TableCell>
+            <TableCell align="center">{med.med_notes}</TableCell>
+            <TableCell align="right">{med.med_phone}</TableCell>
             <TableCell align="right">{med.date}</TableCell>
             <TableCell>
             <Button onClick={() => editData(med.id)} >update</Button>
