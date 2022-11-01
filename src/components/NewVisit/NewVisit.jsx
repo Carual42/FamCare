@@ -146,7 +146,7 @@ const sendVisit = () => {
         <TextField  value={procedure} 
                     onChange={(event) => setProcedure(event.target.value)}
                     className="filled-basic" multiline 
-                    label="Exam" variant="filled" />
+                    label="Procedure" variant="filled" />
         <TextField  value={procedureNote} 
                     onChange={(event) => setProcedureNote(event.target.value)}
                     className="filled-basic" multiline

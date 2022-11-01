@@ -89,7 +89,7 @@ function VisitCardOne() {
       </Typography>
       </Grid>
       <Grid align={'right'}>
-      <MedicalInformationIcon sx={{ fontSize: 55, ml: 20, mt: 2 }}
+      <MedicalInformationIcon sx={{ fontSize: 55, ml: 14, mt: 2 }}
       color="primary"/>
       </Grid>
       </Grid>
