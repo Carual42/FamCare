@@ -45,10 +45,10 @@ router.get('/:id', (req, res) => {
  router.put('/:id', (req, res) => {
   console.log(req.body, req.params);
   const queryText = `UPDATE "medication" 
-                    SET "name" = $1, 
-                    "phone" = $2, 
+                    SET "med_name" = $1, 
+                    "med_phone" = $2, 
                     "date" = $3, 
-                    "notes" = $4
+                    "med_notes" = $4
                      WHERE "id" = $5;`;
   pool.query(queryText, [req.body.name, req.body.phone, req.body.date, req.body.notes, req.params.id])
       .then(results => {

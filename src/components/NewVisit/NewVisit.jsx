@@ -3,6 +3,7 @@ import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
 
 
 // This is one of our simplest components
@@ -107,7 +108,6 @@ const sendVisit = () => {
     setExam('');
     setExamNote('');
   }
- 
 
   return (
     <div className="container">
