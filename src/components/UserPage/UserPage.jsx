@@ -6,6 +6,9 @@ import VisitCard from '../VisitCard/VisitCard';
 import ResourceCard from '../ResourceCard/ResourceCard';
 import VisitCardOne from '../VisitCard/VisitCardOne';
 import VisitCardTwo from '../VisitCard/VisitCardTwo';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -21,14 +24,29 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <div>
+        <Box sx={{ flexGrow: 1}}>
+          <Grid container spacing={2}
+          style={{}}>
+            <Grid Visitcard ms={35}>
         <VisitCard />
+        </Grid>
+            <Grid Visitcard ms={15}>
         <VisitCardOne />
+        </Grid>
+            <Grid Visitcard ms={15}>
         <VisitCardTwo />
+        </Grid>
+        </Grid>
+        
+        </Box>
         {/* <ResourceCard /> */}
       </div>
-      <button onClick={() => handleClick()} placeholder='New Visit'>New Visit</button>
+      <Button ms={{ minWidth: 900 }} onClick={() => handleClick()} placeholder='New Visit'>New Visit</Button>
       <br />
-      <LogOutButton className="btn" />
+      <Box align={'right'}>
+      <LogOutButton 
+      className="btn" />
+      </Box>
     </div>
   );
 }

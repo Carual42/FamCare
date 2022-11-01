@@ -72,8 +72,8 @@ function VisitCardTwo() {
   // }
 
   return (
-    <div>
-    <Card sx={{ maxWidth: 400 }} elevation={15} >
+    <div style={{ padding: 30}}>
+    <Card sx={{ minWidth: 400 }} elevation={15} >
       <h3>Last visit on {visitList.date}</h3>
     <CardContent>
       <ul>Newest Medication: {visitList.med_name}</ul>
