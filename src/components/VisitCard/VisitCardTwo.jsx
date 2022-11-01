@@ -19,7 +19,7 @@ const bull = (
   </Box>
 );
 
-function VisitCard() {
+function VisitCardTwo() {
 //   const medName = useSelector(store => store.med);
 // console.log('medname', medName)
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function VisitCard() {
     .then((response) => {
       // setVisitList(response.data);
       console.log('response data', response.data);
-      const id = response.data[0].id
+      const id = response.data[2].id
 
       console.log('id', id)
       fetchVisit(id);
@@ -51,7 +51,8 @@ function VisitCard() {
       axios.get(`/api/visit/${id}`)
       .then((response) => {
           setVisitList(response.data[0]);
-          console.log('visitList', visitList)
+          console.log('visitList', visitList);
+
       }).catch((error) => {
           console.log('error in fetchVisit', error);
       });
@@ -85,4 +86,4 @@ function VisitCard() {
 }
 
 
-export default VisitCard;
+export default VisitCardTwo;
