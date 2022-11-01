@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux'
 
 
 // This is one of our simplest components
@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from 'react-redux';
 function NewVisit() {
 const history = useHistory();
 const [date, setDate] = useState('');
+const dispatch = useDispatch();
 
 // get request to get most recent visit number then +1 it?
 const [newVisitID, setNewVisitID] = useState('');
@@ -68,6 +69,9 @@ const sendVisit = () => {
     console.log('this is the object', medVisit);
     newMedVisit.push(medVisit);
     console.log('this is the array', newMedVisit);
+    dispatch({type: 'SET_MED', payload: med})
+    dispatch({type: 'SET_MED_PHONE', payload: medPhone})
+    dispatch({type: 'SET_MED_NOTES', payload: medNote})
     setMedPhone('');
     setMed('');
     setMedNote('');
@@ -86,6 +90,9 @@ const sendVisit = () => {
     console.log('this is the object', medVisit);
     newProcedureVisit.push(medVisit);
     console.log('this is the array', newMedVisit);
+    dispatch({type: 'SET_PROCEDURE', payload: procedure})
+    dispatch({type: 'SET_PROCEDURE_PHONE', payload: procedurePhone})
+    dispatch({type: 'SET_PROCEDURE_NOTES', payload: procedureNote})
     setProcedurePhone('');
     setProcedure('');
     setProcedureNote('');
@@ -104,11 +111,13 @@ const sendVisit = () => {
     console.log('this is the object', medVisit);
     newExamVisit.push(medVisit);
     console.log('this is the array', newMedVisit);
+    dispatch({type: 'SET_SCAN', payload: exam})
+    dispatch({type: 'SET_SCAN_PHONE', payload: examPhone})
+    dispatch({type: 'SET_SCAN_NOTES', payload: examNote})
     setExamPhone('');
     setExam('');
     setExamNote('');
   }
- 
 
   return (
     <div className="container">

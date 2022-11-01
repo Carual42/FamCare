@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 // import { useParams } from 'react-router-dom';
 
 const bull = (
@@ -19,23 +20,28 @@ const bull = (
 );
 
 function VisitCard() {
-
+//   const medName = useSelector(store => store.med);
+// console.log('medname', medName)
+  const dispatch = useDispatch();
   // const {id} = useParams();
   const [visitList, setVisitList] = useState([]);
-  const [itemList, setItemList] = useState([]);
+  // const [itemList, setItemList] = useState([]);
+
 
   useEffect(() => {
     fetchVisitID();
-      
+      // fetchVisit(25);
   }, []);
   
   const fetchVisitID = () => {
     axios.get('/api/newVisit')
     .then((response) => {
-      setVisitList(response.data);
-      
-      console.log('response data', visitList[0].id);
-      fetchVisit(visitList[0].id);
+      // setVisitList(response.data);
+      // console.log('response data', visitList[0]);
+      const id = response.data[0].id
+      console.log('id', id)
+      fetchVisit(id);
+
     }).catch((error) => {
         console.log('error in fetchMeds', error);
     });
@@ -44,35 +50,35 @@ function VisitCard() {
   const fetchVisit = (id) =>{
       axios.get(`/api/visit/${id}`)
       .then((response) => {
-          setItemList(response.data);
-          console.log(response.data);
+          setVisitList(response.data[0]);
+          console.log('visitList', visitList)
       }).catch((error) => {
           console.log('error in fetchVisit', error);
       });
   }
 
+  // const setReducers = (item) => {
+  //   dispatch({type: 'SET_MED', payload: item.med_name})
+  //   dispatch({type: 'SET_MED_PHONE', payload: item.med_phone})
+  //   dispatch({type: 'SET_MED_NOTES', payload: item.med_notes})
+  //   dispatch({type: 'SET_PROCEDURE', payload: item.procedure_name})
+  //   dispatch({type: 'SET_PROCEDURE_PHONE', payload: item.procedure_phone})
+  //   dispatch({type: 'SET_PROCEDURE_NOTES', payload: item.procedure_notes})
+  //   dispatch({type: 'SET_SCAN', payload: item.scan_name})
+  //   dispatch({type: 'SET_SCAN_PHONE', payload: item.scan_phone})
+  //   dispatch({type: 'SET_SCAN_NOTES', payload: item.scan_notes})
+  // }
+
   return (
     
     <Card sx={{ minWidth: 275 }} elevation={15} >
+      <p>Latest visit here</p>
     <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Word of the Day
-      </Typography>
-      <Typography variant="h5" component="div">
-        be{bull}nev{bull}o{bull}lent
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
-      </Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
-      </Typography>
+      <li>{visitList.date}</li>
+      <li>{visitList.med_name}</li>
+      <li>{visitList.procedure_name}</li>
+      <li>{visitList.scan_name}</li>
     </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
   </Card>
 );
 }
