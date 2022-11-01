@@ -27,15 +27,14 @@ function UserPage() {
       <br />
       <div>
         <Box sx={{ flexGrow: 1}}>
-          <Grid container spacing={2}
-          style={{}}>
-            <Grid  ms={35}>
+          <Grid container spacing={2}>
+            <Grid  item md={4}>
         <VisitCard />
         </Grid>
-            <Grid  ms={15}>
+            <Grid item md={4}>
         <VisitCardOne />
         </Grid>
-            <Grid ms={15}>
+            <Grid item md={4}>
         <VisitCardTwo />
         </Grid>
         </Grid>
