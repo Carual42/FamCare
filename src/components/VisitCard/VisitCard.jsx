@@ -93,9 +93,27 @@ function VisitCard() {
       </Grid>
       </Box>
     <CardContent>
-      <ul><MedicationIcon sx={{fontSize: 40}} color="primary"/> {visitList.med_name}</ul>
-      <ul><PsychologyIcon color="primary"/> {visitList.procedure_name}</ul>
-      <ul><AssignmentIndIcon color="primary"/> {visitList.scan_name}</ul>
+    <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+}}>
+      <MedicationIcon sx={{fontSize: 40}} color="primary"/> <ul>{visitList.med_name}</ul>
+      </div>
+      <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+}}>
+      <PsychologyIcon sx={{fontSize: 40}} color="primary"/> <ul>{visitList.procedure_name}</ul>
+      </div>
+      <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+}}>
+      <AssignmentIndIcon sx={{fontSize: 40}} color="primary"/> <ul>{visitList.scan_name}</ul>
+    </div>
     </CardContent>
   </Card>
   </div>

@@ -22,7 +22,9 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <br />
+      <br />
+      <br />
       <div>
         <Box sx={{ flexGrow: 1}}>
           <Grid container spacing={2}
