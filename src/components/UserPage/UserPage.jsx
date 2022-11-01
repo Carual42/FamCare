@@ -22,18 +22,20 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <br />
+      <br />
+      <br />
       <div>
         <Box sx={{ flexGrow: 1}}>
           <Grid container spacing={2}
           style={{}}>
-            <Grid Visitcard ms={35}>
+            <Grid  ms={35}>
         <VisitCard />
         </Grid>
-            <Grid Visitcard ms={15}>
+            <Grid  ms={15}>
         <VisitCardOne />
         </Grid>
-            <Grid Visitcard ms={15}>
+            <Grid ms={15}>
         <VisitCardTwo />
         </Grid>
         </Grid>
@@ -41,7 +43,7 @@ function UserPage() {
         </Box>
         {/* <ResourceCard /> */}
       </div>
-      <Button ms={{ minWidth: 900 }} onClick={() => handleClick()} placeholder='New Visit'>New Visit</Button>
+      <Button ms={{ fontSize: 100 }} onClick={() => handleClick()} placeholder='New Visit'>New Visit</Button>
       <br />
       <Box align={'right'}>
       <LogOutButton 
