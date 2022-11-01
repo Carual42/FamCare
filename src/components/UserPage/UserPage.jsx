@@ -43,6 +43,7 @@ function UserPage() {
         </Box>
         {/* <ResourceCard /> */}
       </div>
+      <br />
       <Button ms={{ fontSize: 100 }} onClick={() => handleClick()} placeholder='New Visit'>New Visit</Button>
       <br />
       <Box align={'right'}>
