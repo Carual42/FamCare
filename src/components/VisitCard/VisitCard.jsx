@@ -8,6 +8,12 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import Grid from '@mui/material/Grid';
+import MedicationIcon from '@mui/icons-material/Medication';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 // import { useParams } from 'react-router-dom';
 
 const bull = (
@@ -73,11 +79,23 @@ function VisitCard() {
   return (
     <div style={{ padding: 30}}>
     <Card sx={{ minWidth: 400 }} elevation={15} >
+    <Box sx={{ flexGrow: 1}} style={{ padding: 8}}>
+      <Grid container spacing={1}>
+        <Grid>
+          <Typography sx={{ mt: 1, ml: 2}}>
       <h3>Last visit on {visitList.date}</h3>
+      </Typography>
+      </Grid>
+      <Grid align={'right'}>
+      <MedicalInformationIcon sx={{ fontSize: 55, ml: 20, mt: 2 }}
+      color="primary"/>
+      </Grid>
+      </Grid>
+      </Box>
     <CardContent>
-      <ul>Newest Medication: {visitList.med_name}</ul>
-      <ul>Most Recent Procedure: {visitList.procedure_name}</ul>
-      <ul>latest Radiology Scan: {visitList.scan_name}</ul>
+      <ul><MedicationIcon sx={{fontSize: 40}} color="primary"/> {visitList.med_name}</ul>
+      <ul><PsychologyIcon color="primary"/> {visitList.procedure_name}</ul>
+      <ul><AssignmentIndIcon color="primary"/> {visitList.scan_name}</ul>
     </CardContent>
   </Card>
   </div>
