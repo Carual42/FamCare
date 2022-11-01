@@ -30,15 +30,15 @@ function VisitCard() {
 
   useEffect(() => {
     fetchVisitID();
-      // fetchVisit(25);
   }, []);
   
   const fetchVisitID = () => {
     axios.get('/api/newVisit')
     .then((response) => {
       // setVisitList(response.data);
-      // console.log('response data', visitList[0]);
+      console.log('response data', response.data);
       const id = response.data[0].id
+
       console.log('id', id)
       fetchVisit(id);
 
@@ -57,6 +57,7 @@ function VisitCard() {
       });
   }
 
+
   // const setReducers = (item) => {
   //   dispatch({type: 'SET_MED', payload: item.med_name})
   //   dispatch({type: 'SET_MED_PHONE', payload: item.med_phone})
@@ -70,7 +71,7 @@ function VisitCard() {
   // }
 
   return (
-    
+    <div>
     <Card sx={{ minWidth: 275 }} elevation={15} >
       <p>Latest visit here</p>
     <CardContent>
@@ -80,6 +81,7 @@ function VisitCard() {
       <li>{visitList.scan_name}</li>
     </CardContent>
   </Card>
+  </div>
 );
 }
 
