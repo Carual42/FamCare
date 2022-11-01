@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import VisitCard from '../VisitCard/VisitCard';
 import ResourceCard from '../ResourceCard/ResourceCard';
+import VisitCardOne from '../VisitCard/VisitCardOne';
+import VisitCardTwo from '../VisitCard/VisitCardTwo';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -20,6 +22,8 @@ function UserPage() {
       <p>Your ID is: {user.id}</p>
       <div>
         <VisitCard />
+        <VisitCardOne />
+        <VisitCardTwo />
         {/* <ResourceCard /> */}
       </div>
       <button onClick={() => handleClick()} placeholder='New Visit'>New Visit</button>
