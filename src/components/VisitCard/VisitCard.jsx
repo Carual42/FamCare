@@ -83,7 +83,7 @@ function VisitCard() {
       <Grid container spacing={1}>
         <Grid>
           <Typography sx={{ mt: 1, ml: 2}}>
-      <h3>Last visit on {visitList.date}</h3>
+      {visitList.date ? <h3>Last visit on {visitList.date}</h3> : <h3>Add a New Visit</h3>}
       </Typography>
       </Grid>
       <Grid align={'right'}>
