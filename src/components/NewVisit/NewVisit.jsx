@@ -16,11 +16,11 @@ const history = useHistory();
 const [date, setDate] = useState('');
 
 // get request to get most recent visit number then +1 it?
-const [newVisitID, setNewVisitID] = useState('');
+// const [newVisitID, setNewVisitID] = useState(0);
 
-useEffect(() => {
-    fetchVisitID();
-}, []);
+// useEffect(() => {
+//     fetchVisitID();
+// }, []);
 
 const newID = (id) => {
   let plusOne = parseInt(id) + 1;
@@ -28,15 +28,15 @@ const newID = (id) => {
   setNewVisitID(plusOne)
 }
 
-const fetchVisitID = () => {
-    axios.get('/api/newVisit')
-    .then((response) => {
-      console.log(response.data)
-        newID(response.data[0].id)
-    }).catch((error) => {
-        console.log('error in fetchMeds', error);
-    });
-}
+// const fetchVisitID = () => {
+//     axios.get('/api/newVisit')
+//     .then((response) => {
+//       console.log(response.data)
+//         newID(response.data[0].id)
+//     }).catch((error) => {
+//         console.log('error in fetchMeds', error);
+//     });
+// }
 
 // POST to database
 const sendVisit = () => {
@@ -46,7 +46,7 @@ const sendVisit = () => {
    procedure: newProcedureVisit,
    exam: newExamVisit,
    date: date,
-   visit: newVisitID})
+  })
   .then(() => {
     alert('visit done');
     history.push(`/`);

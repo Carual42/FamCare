@@ -32,22 +32,22 @@ const router = express.Router();
   if (req.isAuthenticated()){
     console.log('this is req.body', req.body)
     const queryText = `INSERT INTO "visit" (date, user_visit_id)
-                       VALUES ($1, $2);`;
-    await pool.query(queryText, [req.body.date, req.user.id]);
+                       VALUES ($1, $2) RETURNING "id";`;
+   const result = await pool.query(queryText, [req.body.date, req.user.id]);
     const queryText2 = `INSERT INTO "medication" (med_name, med_notes, user_id, visit_id, med_phone, date)
                         VALUES ($1, $2, $3, $4, $5, $6);`;
     for (let i = 0; i < req.body.med.length; i++ ) {
-    await pool.query(queryText2, [ req.body.med[i].name, req.body.med[i].note, req.user.id, req.body.visit, req.body.med[i].phone, req.body.date])
+    await pool.query(queryText2, [ req.body.med[i].name, req.body.med[i].note, req.user.id, result.rows[0].id, req.body.med[i].phone, req.body.date])
     };
     const queryText3 = `INSERT INTO "procedure" (procedure_name, procedure_notes, user_id, visit_id, procedure_phone, date)
                         VALUES ($1, $2, $3, $4, $5, $6);`;
     for (let i = 0; i < req.body.procedure.length; i++ ) {
-    await pool.query(queryText3, [ req.body.procedure[i].name, req.body.procedure[i].note, req.user.id, req.body.visit, req.body.procedure[i].phone, req.body.date])
+    await pool.query(queryText3, [ req.body.procedure[i].name, req.body.procedure[i].note, req.user.id, result.rows[0].id, req.body.procedure[i].phone, req.body.date])
     };
     const queryText4 = `INSERT INTO "scan" (scan_name, scan_notes, user_id, visit_id, scan_phone, date)
                         VALUES ($1, $2, $3, $4, $5, $6);`;
     for (let i = 0; i < req.body.exam.length; i++ ) {
-    await pool.query(queryText4, [ req.body.exam[i].name, req.body.exam[i].note, req.user.id, req.body.visit, req.body.exam[i].phone, req.body.date])
+    await pool.query(queryText4, [ req.body.exam[i].name, req.body.exam[i].note, req.user.id, result.rows[0].id, req.body.exam[i].phone, req.body.date])
     };
     res.sendStatus(201);}
   } catch (err) {
