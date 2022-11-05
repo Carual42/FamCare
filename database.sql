@@ -17,27 +17,30 @@ CREATE TABLE "visit" (
 
 CREATE TABLE "medication" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (40),
+    "med_name" VARCHAR (40),
     "date" VARCHAR (20),
-    "notes" text,
+    "med_notes" text,
     "user_id" INT REFERENCES "user",
-    "visit_id" INT REFERENCES "visit"
+    "visit_id" INT REFERENCES "visit",
+    "med_phone" VARCHAR (20)
 );
 
 CREATE TABLE "procedure" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (40),
+    "procedure_name" VARCHAR (40),
     "date" VARCHAR (20),
-    "notes" text,
+    "procedure_notes" text,
     "user_id" INT REFERENCES "user",
-    "visit_id" INT REFERENCES "visit"
+    "visit_id" INT REFERENCES "visit",
+    "procedure_phone" VARCHAR (20)
 );
 
 CREATE TABLE "scan" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (40),
+    "scan_name" VARCHAR (40),
     "date" VARCHAR (20),
-    "notes" text,
+    "scan_notes" text,
     "user_id" INT REFERENCES "user",
-    "visit_id" INT REFERENCES "visit"
+    "visit_id" INT REFERENCES "visit",
+    "scan_phone" VARCHAR (20)
 );
