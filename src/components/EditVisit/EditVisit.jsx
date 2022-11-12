@@ -23,9 +23,9 @@ const fetchAndEdit = () => {
     .then((response) => {
       console.log(response.data);
       const med = response.data;
-      setMedPhone(med.phone);
-      setMed(med.name);
-      setMedNote(med.notes);
+      setMedPhone(med.medication_phone);
+      setMed(med.medication_name);
+      setMedNote(med.medication_notes);
       setDate(med.date);
     }).catch((error) => {
         console.log('error in fetchAndEdit', error);
@@ -50,7 +50,7 @@ const editSubmit = () => {
   return (
     <div className="container">
       <div>
-        <p>This page will have input fields for the user to enter new information</p>
+        <h2>Edit your medication entry</h2>
         <TextField  value={date} 
                     onChange={(event) => setDate(event.target.value)}
                     className="filled-basic" multiline 
