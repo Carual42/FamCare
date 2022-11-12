@@ -1,20 +1,16 @@
-# <img src="public/images/logo-cropped-2.jpg" style="height: 100px;"/> Waffle's Spot 
+# <img src="public/upload/Logo.jpg" style="height: 50px;"/> The support system for your support system
 
 ## Description
 
 _Duration: 2.5 weeks, working part time_
 
-I have a cat named Waffle. While I'm very good at remembering the annual vet visit, I'm not so good at remembering the smaller, repeated tasks that need to happen throughout the year to keep my cat happy and healthy. I built Waffle's Spot to provide myself and other pet owners with daily pet care reminders, as well as a space to record notes and instructions from vet appointments. 
+I have seen many patients and their loved ones feel powerless in a seemingly hopeless situation. this app will give your support system, a support system. Using this app you can create medication lists, track scans and exams done, update your records if there's any change to the above, and delete any out-dated information.
 
-I also have peace-of-mind knowing that I can share my pet's profile with pet-sitters when I go out of town, so they can easily see what needs to happen while I'm gone.
 
 ## Screen Shots
 
-<img src="public/screenshots/user-home.jpg" style="height: 300px;"/> <img src="public/screenshots/pet-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/reminders.jpg" style="height: 300px;"/>
+<img src="public/upload/home.png" style="height: 300px;"/> <img src="public/upload/table.png" style="height: 300px;"/> <img src="public/upload/edit.png" style="height: 300px;"/>
 
-<img src="public/screenshots/edit-add-care.jpg" style="height: 300px;"/> <img src="public/screenshots/add-care-task.jpg" style="height: 300px;"/> <img src="public/screenshots/edit-details.jpg" style="height: 300px;"/>
-
-<img src="public/screenshots/vet-note.jpg" style="height: 300px;"/> <img src="public/screenshots/share-profile.jpg" style="height: 300px;"/> 
 
 ### Prerequisites
 
@@ -24,22 +20,18 @@ I also have peace-of-mind knowing that I can share my pet's profile with pet-sit
 
 ## Installation
 
-1. Create a database named `waffle_spot`.
+1. Create a database named `famcare`.
 2. The queries in the `database.sql` file are set up to create the necessary tables. The project is built on [PostgreSQL](https://www.postgresql.org/download/), so you will need to make sure to have that installed. I recommend using [Postico](https://eggerapps.at/postico/) to run those queries as that was used to create the queries.
 3. Open up your editor of choice and run an `npm install`.
 4. Run `npm run server` in your terminal.
 5. Run `npm run client` in your terminal.
-6. The `npm run client` command will open up a new browser tab for you! Waffle's Spot was built to be compatible with Google Chrome and was designed to be viewed as a mobile application. For the best user interface experience, right click in the browser window, select 'Inspect', select the 'Toogle Device Toolbar' button in the upper right, and choose the iPhone 12 Pro view from the dropdown at the top of the window.
-
-<img src="public/screenshots/toogle-device-toolbar.jpg" style="width: 400px;"/>
-
-<img src="public/screenshots/device-dropdown.jpg" style="width: 400px;"/>
+6. The `npm run client` command will open up a new browser tab for you! FamCare was built to be compatible with Google Chrome.
 
 ## Usage
 
-Waffle's Spot makes it easier to remember the little things that keep pets healthy and happy. Whether you need to keep up with daily medications, want to a weekly reminder to clean the litter box, or just got new instructions from the vet, Waffle's Spot takes all of that info and lets you know what needs attention today.
+Having a well documented medical history is key to good future healthcare. FamCare will help you keep track of all the bigger things like medications and surgeries, as well as the small things, like reference phone numbers and notes given by your provider. Making your healthcare visits easier.
 
-Waffle's Spot also simplifies getting care for your pets while you're traveling. You can share pet profiles with anyone who has a Waffle's Spot account. Leaving pets at home can be tough, but, with Waffle's Spot, you have the relief of knowing that the pet-sitter can see exactly what needs to happen each day, and the pet-sitter has the convenience of a daily plan. 
+
 
 ## Built With
 
@@ -47,8 +39,6 @@ Waffle's Spot also simplifies getting care for your pets while you're traveling.
 - [nodemon](https://nodemon.io/)
 - [Express](https://expressjs.com/)
 - [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [Redux-Saga](https://redux-saga.js.org/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 - [Material UI](https://mui.com/)
 - [React Icons](https://www.npmjs.com/package/react-icons)
