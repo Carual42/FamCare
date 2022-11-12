@@ -17,8 +17,9 @@ const router = express.Router();
         "procedure"."visit_id" 
         join "scan" on "procedure"."visit_id" = 
         "scan"."visit_id"
-        WHERE "medication"."visit_id" = $1;`;
-        pool.query(queryText, [req.params.id]).then((result) => {
+        WHERE "medication"."visit_id" = $1
+        AND "user_id" = $2;`;
+        pool.query(queryText, [req.params.id, req.user.id]).then((result) => {
             res.send(result.rows);
         }).catch((error) => {
             console.log(error);
