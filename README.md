@@ -46,3 +46,8 @@ Having a well documented medical history is key to good future healthcare. FamCa
 - CSS
 - HTML
 - AWS (in progress )
+
+## To DO
+[] remove excess code
+[] new name
+[] AWS key inputed
