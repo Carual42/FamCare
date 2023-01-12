@@ -66,17 +66,17 @@ function VisitCardTwo() {
   }
 
 
-  // const setReducers = (item) => {
-  //   dispatch({type: 'SET_MED', payload: item.med_name})
-  //   dispatch({type: 'SET_MED_PHONE', payload: item.med_phone})
-  //   dispatch({type: 'SET_MED_NOTES', payload: item.med_notes})
-  //   dispatch({type: 'SET_PROCEDURE', payload: item.procedure_name})
-  //   dispatch({type: 'SET_PROCEDURE_PHONE', payload: item.procedure_phone})
-  //   dispatch({type: 'SET_PROCEDURE_NOTES', payload: item.procedure_notes})
-  //   dispatch({type: 'SET_SCAN', payload: item.scan_name})
-  //   dispatch({type: 'SET_SCAN_PHONE', payload: item.scan_phone})
-  //   dispatch({type: 'SET_SCAN_NOTES', payload: item.scan_notes})
-  // }
+  const setReducers = (item) => {
+    dispatch({type: 'SET_MED', payload: item.med_name})
+    dispatch({type: 'SET_MED_PHONE', payload: item.med_phone})
+    dispatch({type: 'SET_MED_NOTES', payload: item.med_notes})
+    dispatch({type: 'SET_PROCEDURE', payload: item.procedure_name})
+    dispatch({type: 'SET_PROCEDURE_PHONE', payload: item.procedure_phone})
+    dispatch({type: 'SET_PROCEDURE_NOTES', payload: item.procedure_notes})
+    dispatch({type: 'SET_SCAN', payload: item.scan_name})
+    dispatch({type: 'SET_SCAN_PHONE', payload: item.scan_phone})
+    dispatch({type: 'SET_SCAN_NOTES', payload: item.scan_notes})
+  }
 
   return (
     <div style={{ padding: 30}}>
