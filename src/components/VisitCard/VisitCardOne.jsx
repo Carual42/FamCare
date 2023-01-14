@@ -75,7 +75,7 @@ function VisitCardOne() {
     dispatch({type: 'SET_PROCEDURE_NOTES', payload: item.procedure_notes})
     dispatch({type: 'SET_SCAN', payload: item.scan_name})
     dispatch({type: 'SET_SCAN_PHONE', payload: item.scan_phone})
-    dispatch({type: 'SET_SCAN_NOTES', payload: item.scan_notes})
+    dispatch({type: 'SET_SCAN_NOTES_for_money', payload: item.scan_notes})
   }
 
   return (
