@@ -69,7 +69,7 @@ function VisitCardOne() {
   const setReducers = (item) => {
     dispatch({type: 'SET_MED', payload: item.med_name})
     dispatch({type: 'SET_MED_PHONE', payload: item.med_phone})
-    dispatch({type: 'SET_MED_NOTES', payload: item.med_notes})
+    dispatch({type: 'SET_MED_NOTES_for_self', payload: item.med_notes})
     dispatch({type: 'SET_PROCEDURE', payload: item.procedure_name})
     dispatch({type: 'SET_PROCEDURE_PHONE', payload: item.procedure_phone})
     dispatch({type: 'SET_PROCEDURE_NOTES_for_doc', payload: item.procedure_notes})
